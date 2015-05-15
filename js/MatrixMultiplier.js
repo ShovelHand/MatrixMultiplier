@@ -2,8 +2,8 @@
 
 function MatrixCalc()
 {
-var a11 = document.getElementById('a11'); 
-a11.value = parseFloat(a11.value).toFixed(2);
+var a11 = (document.getElementById('a11'); 
+/*
 var a12 = document.getElementById('a12');
 a12.value = parseFloat(a12.value).toFixed(2);
 var a13 = document.getElementById('a13');
@@ -32,7 +32,7 @@ b31.value = parseFloat(b31.value).toFixed(2);
 var b32 = document.getElementById('b32');
 var b33 = document.getElementById('b33');
 var c11;
-c11 = a11*b11 + a12*b21 + a13*b31;
-document.write(a11*b11 + a12*b21 + a13*b31);
+c11 = a11; */
+document.write(a11);
 }
 //element.onevent = MatrixCalc;
