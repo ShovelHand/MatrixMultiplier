@@ -2,37 +2,44 @@
 
 function MatrixCalc()
 {
-var a11 = (document.getElementById('a11'); 
-/*
-var a12 = document.getElementById('a12');
-a12.value = parseFloat(a12.value).toFixed(2);
-var a13 = document.getElementById('a13');
-a13.value = parseFloat(a13.value).toFixed(2);
+var a11 = parseFloat(document.getElementById('a11').value); 
+var a12 = parseFloat(document.getElementById('a12').value);
+var a13 = parseFloat(document.getElementById('a13').value);
 
-var a21 = document.getElementById('a21'); 
-var a22 = document.getElementById('a22');
-var a23 = document.getElementById('a23');
+var a21 = parseFloat(document.getElementById('a21').value); 
+var a22 = parseFloat(document.getElementById('a22').value);
+var a23 = parseFloat(document.getElementById('a23').value);
 
-var a31 = document.getElementById('a31'); 
-var a32 = document.getElementById('a32');
-var a33 = document.getElementById('a33');
+var a31 = parseFloat(document.getElementById('a31').value); 
+var a32 = parseFloat(document.getElementById('a32').value);
+var a33 = parseFloat(document.getElementById('a33').value);
 
-var b11 = document.getElementById('b11'); 
-b11.value = parseFloat(b11.value).toFixed(2);
-var b12 = document.getElementById('b12');
-var b13 = document.getElementById('b13');
+var b11 = parseFloat(document.getElementById('b11').value); 
+var b12 = parseFloat(document.getElementById('b12').value);
+var b13 = parseFloat(document.getElementById('b13').value);
 
-var b21 = document.getElementById('b21'); 
-b21.value = parseFloat(b21.value).toFixed(2);
-var b22 = document.getElementById('b22');
-var b23 = document.getElementById('b23');
+var b21 = parseFloat(document.getElementById('b21').value); 
+var b22 = parseFloat(document.getElementById('b22').value);
+var b23 = parseFloat(document.getElementById('b23').value);
 
-var b31 = document.getElementById('b31'); 
-b31.value = parseFloat(b31.value).toFixed(2);
-var b32 = document.getElementById('b32');
-var b33 = document.getElementById('b33');
-var c11;
-c11 = a11; */
-document.write(a11);
+var b31 = parseFloat(document.getElementById('b31').value); 
+var b32 = parseFloat(document.getElementById('b32').value);
+var b33 = parseFloat(document.getElementById('b33').value);
+
+var c11 = a11*b11 + a12*b21 + a13*b31;
+var c12 = a11*b12 + a12*b22 + a13*b23;
+var c13 = a11*b13 + a12*b23 + a13*b33;
+
+var c21 = a21*b11 + a22*b21 + a23*b31;
+var c22 = a21*b12 + a22*b22 + a23*b32;
+var c23 = a21*b13 + a22*b23 + a23*b33;
+
+var c31 = a31*b11 + a32*b21 + a33*b31;
+var c32 = a31*b12 + a32*b22 + a33*b32;
+var c33 = a31*b13 + a32*b23 + a33*b33;
+
+document.write(c11.toString() + " " + c12.toString() + " " + c13.toString() +
+"<br>" + c21.toString() + " " + c22.toString() + " " + c23.toString() +
+"<br>" + c31.toString() + " " + c32.toString() + " " + c33.toString());
 }
 //element.onevent = MatrixCalc;
