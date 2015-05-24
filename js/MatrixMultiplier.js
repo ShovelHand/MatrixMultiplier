@@ -1,8 +1,76 @@
 
+function parseString(input)
+{
+	//Check for trig function
+	var cos =  sin = tan = false;
+	
+	if(input.substring(0,3) == "cos")
+		cos = true;
+	if(input.substring(0,3) == "sin")
+		sin = true;
+	if(input.substring(0,3) == "tan")
+		tan = true;
+	
+	if(cos || sin || tan) //get rid of the trig word to make the rest easier
+		input = input.substring(3, input.length)
+		//strip brackets
+/*	for (int i = 0; i < input.length; i++)
+	{
+		if(input[i] == '(' || input[i] == ')')
+		{
+			
+		}
+	}
+	*/	
+	var firstNumberStr = "";  //now get remaining string while it's a number, and not 'pi'
+	var index = 0;
+	if(input[index] == '(')
+		input = input.substring(1, input.length);
+	var reg = /[0-9]/g;
+	while(index <= input.length) 
+	{
+		if(!isNaN(input.charAt(index)))
+			index++;	
+		else
+			break;
+	}
+	firstNumberStr = input.substring(0, index);
+	input = input.substring(index, input.length); //cut the first number
+	var firstNumber = parseFloat(firstNumberStr);
+	if(input.substring(0,1) == "pi" )
+	{
+		firstNumber = firstNumber * Math.PI;
+		input = input.substring(3, input.length);
+	}
+	//do we divide the first number by a next one?
+	var divide = false;
+	if (input.substring(0,0) == '/')
+		divide = true;
+	else return firstNumber;
+	
+	var secondNumberString = "";
+	index = 0; 
+	while(input[index] == reg || input[index] == '.' && index < input.length)
+	{
+		secondNumberString[index] = input[index];
+		index++
+	}
+	var secondNumber = parseFloat(secondNumberString);
+	if (divide)
+		firstNumber = firstNumber / secondNumber;
+	if(cos)
+		return Math.cos(firstNumber);
+	else if(sin)
+		return Math.sin(firstNumber);
+	else if(tan)
+		return Math.tan(firstNumber);
+	else 
+		return firstNumber;
+}
 
 function MatrixCalc()
 {
-var a11 = parseFloat(document.getElementById('a11').value); 
+var a11 = parseString(document.getElementById('a11').value); 
 var a12 = parseFloat(document.getElementById('a12').value);
 var a13 = parseFloat(document.getElementById('a13').value);
 
