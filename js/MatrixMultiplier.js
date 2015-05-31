@@ -14,19 +14,14 @@ function parseString(input)
 	if(cos || sin || tan) //get rid of the trig word to make the rest easier
 		input = input.substring(3, input.length)
 		//strip brackets
-/*	for (int i = 0; i < input.length; i++)
-	{
-		if(input[i] == '(' || input[i] == ')')
-		{
-			
-		}
-	}
-	*/	
+	if(input.indexOf('(') != -1)
+		input = input.substring(0, input.indexOf('(') -1) + input.substring(input.indexOf('(') + 1, input.length);
+	if(input.indexOf(')') != -1)
+		input = input.substring(0, input.indexOf(')') );// + input.substring(input.indexOf(')') + 1, input.length);
+	
 	var firstNumberStr = "";  //now get remaining string while it's a number, and not 'pi'
 	var index = 0;
-	if(input[index] == '(')
-		input = input.substring(1, input.length);
-	var reg = /[0-9]/g;
+	
 	while(index <= input.length) 
 	{
 		if(!isNaN(input.charAt(index)))
@@ -37,23 +32,28 @@ function parseString(input)
 	firstNumberStr = input.substring(0, index);
 	input = input.substring(index, input.length); //cut the first number
 	var firstNumber = parseFloat(firstNumberStr);
-	if(input.substring(0,1) == "pi" )
+	if(input.substring(0,2) == "pi" )
 	{
 		firstNumber = firstNumber * Math.PI;
-		input = input.substring(3, input.length);
+		input = input.substring(2, input.length);
 	}
 	//do we divide the first number by a next one?
 	var divide = false;
-	if (input.substring(0,0) == '/')
+	if (input.substring(0,1) == '/')
+	{
 		divide = true;
+		input = input.substring(1, input.lenght);
+	}
 	else return firstNumber;
 	
 	var secondNumberString = "";
 	index = 0; 
-	while(input[index] == reg || input[index] == '.' && index < input.length)
+	while((!isNaN(input.charAt(index) || input[index] == '.')))
 	{
-		secondNumberString[index] = input[index];
+		secondNumberString = input.substring(0, index+1);
 		index++
+		if(index >= input.length)
+			break;
 	}
 	var secondNumber = parseFloat(secondNumberString);
 	if (divide)
